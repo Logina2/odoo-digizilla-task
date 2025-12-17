@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_digizilla_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Digizilla Record: <span t-field="doc.name"/></h2>
+                        
+                        <table class="table table-sm">
+                            <tr>
+                                <td><strong>Name:</strong></td>
+                                <td><span t-field="doc.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gender:</strong></td>
+                                <td><span t-field="doc.gender"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Country:</strong></td>
+                                <td><span t-field="doc.country_id"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Joining Date:</strong></td>
+                                <td><span t-field="doc.joining_date"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Company:</strong></td>
+                                <td><span t-field="doc.company_id"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tags:</strong></td>
+                                <td><span t-field="doc.tag_ids" widget="many2many_tags"/></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Customers:</strong></td>
+                                <td><span t-field="doc.customer_ids" widget="many2many_tags"/></td>
+                            </tr>
+                        </table>
+
+                        <h3>Notes</h3>
+                        <p><span t-field="doc.notes"/></p>
+
+                        <h3>Comments</h3>
+                        <p><span t-field="doc.comments"/></p>
+                        
+                        <!-- Exclude the message logger as requested -->
+                        
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

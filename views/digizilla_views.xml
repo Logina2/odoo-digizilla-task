@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menu Action -->
+    <record id="action_digizilla_digizilla" model="ir.actions.act_window">
+        <field name="name">Digizilla Records</field>
+        <field name="res_model">digizilla.digizilla</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Digizilla record
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_digizilla_root" name="Digizilla" sequence="10"/>
+    <menuitem id="menu_digizilla_records" name="Records" parent="menu_digizilla_root" action="action_digizilla_digizilla" sequence="1"/>
+
+    <!-- List (Tree) View -->
+    <record id="view_digizilla_tree" model="ir.ui.view">
+        <field name="name">digizilla.digizilla.tree</field>
+        <field name="model">digizilla.digizilla</field>
+        <field name="arch" type="xml">
+            <tree string="Digizilla Records">
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="country_id"/>
+                <field name="joining_date"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_digizilla_form" model="ir.ui.view">
+        <field name="name">digizilla.digizilla.form</field>
+        <field name="model">digizilla.digizilla</field>
+        <field name="arch" type="xml">
+            <form string="Digizilla Record">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="gender"/>
+                            <field name="country_id"/>
+                            <field name="joining_date"/>
+                        </group>
+                        <group>
+                            <field name="company_id"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
+                            <field name="customer_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    
+                    <!-- Notebook for Notes and Comments -->
+                    <notebook>
+                        <page name="notes_tab" string="Notes">
+                            <field name="notes"/>
+                        </page>
+                        <page name="comments_tab" string="Comments">
+                            <field name="comments"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                
+                <!-- Messages and logger that tracks any change -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_digizilla_kanban" model="ir.ui.view">
+        <field name="name">digizilla.digizilla.kanban</field>
+        <field name="model">digizilla.digizilla</field>
+        <field name="arch" type="xml">
+            <kanban string="Digizilla Records">
+                <field name="name"/>
+                <field name="company_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>Name: <field name="name"/></li>
+                                    <li>Company: <field name="company_id"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>
