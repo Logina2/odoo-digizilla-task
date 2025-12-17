@@ -1,3 +1,5 @@
+This Odoo 17 module was developed as part of a developer assessment task. It introduces a new model called Digizilla with specific views, business logic, and reporting capabilities.
+
 Features
 Custom Model: digizilla.digizilla with fields for Name, Gender, Country, Joining Date, Tags, Customers, and Company.
 
@@ -32,11 +34,4 @@ JavaScript (OWL): UI customization (hiding the create button).
 
 PostgreSQL: Database management.
 
-How to add this to your project:
-Open your project folder.
-
-Create a new file named README.md.
-
-Paste the text above into it and save.
-
-When you upload this file to GitHub, it will automatically show up as the main description of your project.
+ 
